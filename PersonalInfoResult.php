@@ -16,6 +16,7 @@ $sex = $_POST['sex'];
 $relationship = $_POST['relationship'];
 $action = $_POST['action']
 ?>
+<!doctype html>
 <html>
     <head>
         <meta charset="UTF-8">

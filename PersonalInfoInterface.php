@@ -6,28 +6,134 @@
         <title>Personal Info Interface</title>
         <link href="/CSIS2440/CodeEx/view.css" rel="stylesheet" type="text/css">
     <h1>Please Enter Your Information</h1>
+          <script type="text/javascript">
+            function validate()
+            {
+                console.log("We are validating");
+                console.log(document.myForm.firstName.value);
+                var errorArray = new Array();
+                expressionName = /^[a-zA-Z]+$/;
+                console.log(expressionName.test(document.myForm.firstName.value))
+                if (!expressionName.test(document.getElementById("FirstName").value)){
+                    alert("Please provide the correct format for your first name!");
+                    document.myForm.firstName.focus();
+                    errorArray.push("You need the right format for your first name")
+                    //return false;
+                }
+                expressionName = /^[a-zA-Z]+$/;
+                console.log(expressionName.test(document.myForm.lastName.value))
+                if (!expressionName.test(document.getElementById("LastName").value)){
+                    alert("Please provide the correct format for your last name!");
+                    document.myForm.lastName.focus();
+                    errorArray.push("You need the right format for your last name")
+                    //return false;
+                }
+                expression = /^[0-9]+$/;
+                console.log(expression.test(document.myForm.phoneNumber.value))
+                if (!expression.test(document.getElementById("PhoneNumber").value)){
+                    alert("Please provide the correct format for your phone number!");
+                    document.myForm.phoneNumber.focus();
+                    errorArray.push("You need the right format for your phone number")
+                    //return false;
+                }
+                if (document.myForm.address.value == "") {
+
+                    alert("Please provide your address!");
+                    document.myForm.address.focus();
+//                    return false;
+                    errorArray.push("You need an address")
+                }
+                if (document.myForm.city.value == "") {
+
+                    alert("Please provide your city!");
+                    document.myForm.city.focus();
+//                    return false;
+                    errorArray.push("You need a city")
+                }
+                if (document.myForm.state.value == "") {
+
+                    alert("Please provide your state!");
+                    document.myForm.state.focus();
+//                    return false;
+                    errorArray.push("You need a state")
+                }
+                if (document.myForm.zipCode.value == "" || isNaN(document.myForm.zipCode.value.length != 5)){
+                    alert("Please provide a zip in the format #####.");
+                    document.myForm.zipCode.focus();
+//                    return false;
+                    errorArray.push("You need a Zip Code")
+                }
+                if (document.myForm.birthDate.value == "") {
+
+                    alert("Please provide your birth date!");
+                    document.myForm.birthDate.focus();
+//                    return false;
+                    errorArray.push("You need a birth date")
+                }
+                if (document.myForm.userName.value == "") {
+
+                    alert("Please provide your username!");
+                    document.myForm.userName.focus();
+//                    return false;
+                    errorArray.push("You need a username")
+                }
+                if (document.myForm.password.value == "") {
+
+                    alert("Please provide your password!");
+                    document.myForm.password.focus();
+//                    return false;
+                    errorArray.push("You need a password")
+                }
+                if (document.myForm.sex.value == "") {
+
+                    alert("Please provide your gender!");
+                    document.myForm.sex.focus();
+//                    return false;
+                    errorArray.push("You need a gender")
+                }
+                if (document.myForm.relationship.value == "") {
+
+                    alert("Please provide your relationship!");
+                    document.myForm.relationship.focus();
+//                    return false;
+                    errorArray.push("You need a relationship")
+                }      
+                if (errorArray.length > 0){
+                    var errorReport = document.getElementById("errorlog");
+                    errorString = "<ul>"
+                    for (i = 0; i < errorArray.length; i++){
+                        errorString = errorString + "<li>" + errorArray[i] + "</li>"
+                    }
+                    errorString = errorString + "</ul>"
+                    errorReport.innerHTML = errorString
+                    return false;
+                }
+                return (true);
+
+            }
+      </script>   
     </head>
 
     <body>
         <div class="col-md-5 col-sm-5">
-            <form action="PersonalInfoResult.php" method="post" role="form">
+            <form action="PersonalInfoResult.php" name="myForm" method="post" role="form" onsubmit="return(validate());">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="form-group">
                             <label for="firstName">First Name:</label>
-                            <input name="firstName" type="text" class="form-control">
+                            <input name="firstName" type="text" id="FirstName" class="form-control">
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="form-group">
                             <label for="lastName">Last Name:</label>
-                                <input type="text" name="lastName" class="form-control">
+                                <input type="text" name="lastName" id="LastName" class="form-control">
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="form-group">
                             <label for="phoneNumber">Phone Number:</label>
-                                <input type="number" name="phoneNumber" class="form-control">
+                                <input type="number" name="phoneNumber" id="PhoneNumber" class="form-control">
                         </div>
                     </li>
                     <li class="list-group-item">
